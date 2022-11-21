@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/dest_1"
+    android:id="@+id/inner">
+
+    <fragment
+        android:id="@+id/dest_1"
+        android:name="com.self.twopanapplication.fragments.Fragment1"
+        android:label="Fragment1"
+        tools:layout="@layout/fragment_main">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/dest_2"
+        android:name="com.self.twopanapplication.fragments.Fragment2"
+        android:label="Fragment2"
+        tools:layout="@layout/fragment_main">
+
+    </fragment>
+
+</navigation>
