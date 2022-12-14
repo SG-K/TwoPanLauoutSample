@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_nav_graph"
-    app:startDestination="@id/dest_root">
+    app:startDestination="@id/dest_1">
 
     <fragment
         android:id="@+id/dest_root"
@@ -16,6 +16,14 @@
     <fragment
         android:id="@+id/dest_3"
         android:name="com.self.twopanapplication.fragments.Fragment3"
+        android:label="FragmentRoot"
+        tools:layout="@layout/fragment_main">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/dest_1"
+        android:name="com.self.twopanapplication.fragments.FragmentSplash"
         android:label="FragmentRoot"
         tools:layout="@layout/fragment_main">
 

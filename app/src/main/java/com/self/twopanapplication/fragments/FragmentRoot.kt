@@ -1,8 +1,10 @@
 package com.self.twopanapplication.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavOptions
@@ -25,7 +27,21 @@ class FragmentRoot : Fragment(R.layout.fragment_root) {
         val graph = navController.navInflater.inflate(R.navigation.inner)
         navController.setGraph(graph, Bundle())
 
+        setWidths()
+
         clicklistenrer()
+    }
+
+    private fun setWidths() {
+
+//        view?.findViewById<ConstraintLayout>(R.id.cl_left)?.layoutParams?.width = 600
+//        view?.findViewById<View>(R.id.inner_container)?.layoutParams?.width = 1450
+//        view?.findViewById<ConstraintLayout>(R.id.cl_left)?.minimumWidth = 432
+//        view?.findViewById<View>(R.id.inner_container)?.minimumWidth = 852
+
+//        view?.findViewById<ConstraintLayout>(R.id.cl_left)?.minimumWidth = 600
+//        view?.findViewById<View>(R.id.inner_container)?.minimumWidth = 1450
+
     }
 
     private fun clicklistenrer() {
@@ -82,6 +98,11 @@ class FragmentRoot : Fragment(R.layout.fragment_root) {
                     .build()
             )
             slidingPaneLayout.open()
+
+//            view?.findViewById<ConstraintLayout>(R.id.cl_left)?.layoutParams?.width = 200
+//            view?.findViewById<View>(R.id.inner_container)?.visibility = View.VISIBLE
+//            slidingPaneLayout.open()
+
         }
 
 
@@ -89,6 +110,12 @@ class FragmentRoot : Fragment(R.layout.fragment_root) {
             val rootNavHostFragment =
                 requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
             rootNavHostFragment.navController.navigate(R.id.dest_3)
+        }
+
+        view?.findViewById<Button>(R.id.btn_4)?.setOnClickListener {
+            val rootNavHostFragment =
+                requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
+            rootNavHostFragment.navController.navigateUp()
         }
 
 
