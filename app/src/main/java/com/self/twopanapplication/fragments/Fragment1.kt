@@ -122,13 +122,22 @@ class Fragment3 : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val number = arguments?.getInt("num", 1) ?: 1
         view.findViewById<ConstraintLayout>(R.id.cl_fragment)
             .setBackgroundColor(Color.GREEN)
+
+        view.findViewById<Button>(R.id.btn_1)?.text = "Back  - $number"
 
         view.findViewById<Button>(R.id.btn_1)?.setOnClickListener {
             val rootNavHostFragment =
                 requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
             rootNavHostFragment.navController.navigateUp()
+        }
+
+        view.findViewById<Button>(R.id.btn_2)?.setOnClickListener {
+            val rootNavHostFragment =
+                requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
+            rootNavHostFragment.navController.navigate(R.id.dest_3, bundleOf("num" to number+1))
         }
 
     }
