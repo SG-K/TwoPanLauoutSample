@@ -170,12 +170,18 @@ class FragmentSplash : Fragment(R.layout.fragment_main) {
             .setBackgroundColor(Color.CYAN)
 
         view.findViewById<Button>(R.id.btn_1)?.text = "Pan Fragment"
-        view.findViewById<Button>(R.id.btn_2)?.visibility = View.GONE
+        view.findViewById<Button>(R.id.btn_2)?.text = "Fragment 3 full screen"
 
         view.findViewById<Button>(R.id.btn_1)?.setOnClickListener {
             val rootNavHostFragment =
                 requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
             rootNavHostFragment.navController.navigate(R.id.dest_root)
+        }
+
+        view.findViewById<Button>(R.id.btn_2)?.setOnClickListener {
+            val rootNavHostFragment =
+                requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
+            rootNavHostFragment.navController.navigate(R.id.dest_3)
         }
 
     }
