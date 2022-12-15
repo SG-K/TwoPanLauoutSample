@@ -123,6 +123,7 @@ class Fragment3 : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
 
         val number = arguments?.getInt("num", 1) ?: 1
+        val isInPan = arguments?.getBoolean("pan", false) ?: false
         view.findViewById<ConstraintLayout>(R.id.cl_fragment)
             .setBackgroundColor(Color.GREEN)
 
@@ -134,10 +135,14 @@ class Fragment3 : Fragment(R.layout.fragment_main) {
             rootNavHostFragment.navController.navigateUp()
         }
 
+        if (isInPan){
+            view.findViewById<Button>(R.id.btn_1)?.visibility = View.GONE
+        }
+
         view.findViewById<Button>(R.id.btn_2)?.setOnClickListener {
             val rootNavHostFragment =
                 requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
-            rootNavHostFragment.navController.navigate(R.id.dest_3, bundleOf("num" to number+1))
+            rootNavHostFragment.navController.navigate(R.id.dest_3, bundleOf("num" to if(!isInPan) (number+1) else 1 ))
         }
 
     }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavOptions
@@ -107,9 +108,30 @@ class FragmentRoot : Fragment(R.layout.fragment_root) {
 
 
         view?.findViewById<Button>(R.id.btn_3)?.setOnClickListener {
-            val rootNavHostFragment =
-                requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
-            rootNavHostFragment.navController.navigate(R.id.dest_3)
+//            val rootNavHostFragment =
+//                requireActivity().supportFragmentManager.findFragmentById(R.id.outer_container) as NavHostFragment
+//            rootNavHostFragment.navController.navigate(R.id.dest_3)
+
+            val navController = navHostFragment.navController
+            navController.navigate(
+                // Assume the itemId is the android:id of a destination in
+                // the graph.
+                R.id.dest_3,
+                bundleOf("pan" to true),
+                NavOptions.Builder()
+                    // Pop all destinations off the back stack.
+                    .setPopUpTo(navController.graph.startDestinationId, true)
+                    .apply {
+                        // If we're already open and the detail pane is visible,
+                        // crossfade between the destinations.
+//                        if (slidingPaneLayout.isOpen) {
+//                            setEnterAnim(R.animator.nav_default_enter_anim)
+//                            setExitAnim(R.animator.nav_default_exit_anim)
+//                        }
+                    }
+                    .build()
+            )
+            slidingPaneLayout.open()
         }
 
         view?.findViewById<Button>(R.id.btn_4)?.setOnClickListener {

@@ -21,4 +21,12 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/dest_3"
+        android:name="com.self.twopanapplication.fragments.Fragment3"
+        android:label="Fragment3"
+        tools:layout="@layout/fragment_main">
+
+    </fragment>
+
 </navigation>
